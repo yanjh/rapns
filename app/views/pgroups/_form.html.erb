@@ -1,0 +1,33 @@
+<%= form_for(@pgroup) do |f| %>
+  <% if @pgroup.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@pgroup.errors.count, "error") %> prohibited this pgroup from being saved:</h2>
+
+      <ul>
+      <% @pgroup.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :papp %><br />
+    <%= collection_select(:pgroup,:papp_id,Rapns::Apns::App.all,:id,:name) %>
+  </div>
+  <div class="field">
+    <%= f.label :flag %><br />
+    <%= f.number_field :flag %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description, :rows=>4,:cols=>80 %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

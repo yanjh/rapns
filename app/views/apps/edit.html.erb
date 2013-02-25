@@ -1,0 +1,42 @@
+<h1>Editing App</h1>
+
+<%= form_for(@papp,:url=>app_path(@papp)) do |f| %>
+  <% if @papp.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@papp.errors.count, "error") %> prohibited this papp from being saved:</h2>
+
+      <ul>
+      <% @papp.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :environment %><br />
+    <%= f.text_field :environment %>
+  </div>
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.text_field :password %>
+  </div>
+  <div class="field">
+    <%= f.label :connections %><br />
+    <%= f.text_field :connections %>
+  </div>
+  <div class="field">
+    <%= f.label :certificate %><br />
+    <%= f.text_area :certificate, :rows=>10,:cols=>100 %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Back', apps_path %>

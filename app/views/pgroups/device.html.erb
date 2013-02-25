@@ -1,0 +1,42 @@
+<h1>Devices of group [<%= @pgroup.name %>]</h1>
+
+<table>
+  <tr>
+    <th>Device Token</th>
+    <th>User </th>
+    <th>Edit</th>
+  </tr>
+
+<% @pgroup.pdevice.each do |device| %>
+  <tr>
+    <td><%= device.token %></td>
+    <td><%= device.user %></td>
+    <td><%= link_to 'Remove', remove_device_pgroup_path(@pgroup,:device=>device.id),:method=>:post,:confirm=>"Are U sure?"  %></td>
+  </tr>
+<% end %>
+</table>
+
+<hr>
+<h1>Avaliable Devices</h1>
+
+<table>
+  <tr>
+    <th>Device Token</th>
+    <th>User </th>
+    <th>Edit</th>
+  </tr>
+
+<% @pgroup.other_device.each do |device| %>
+  <tr>
+    <td><%= device.token %></td>
+    <td><%= device.user %></td>
+    <td><%= link_to 'Add', add_device_pgroup_path(@pgroup,:device=>device.id),:method=>:post %></td>
+  </tr>
+<% end %>
+
+</table>
+
+<br>
+<%= link_to 'Back', pgroups_path %>
+
+

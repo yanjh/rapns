@@ -1,0 +1,36 @@
+<h1>Listing pgroups</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>App</th>
+    <th>Description</th>
+    <th>Flag</th>
+    <th></th>
+  </tr>
+
+<% @pgroups.each do |pgroup|
+  begin
+   app = Rapns::Apns::App.find(pgroup.papp_id)
+  rescue
+    
+  end
+%>
+  <tr>
+    <td><%= pgroup.name %></td>
+    <td><%= app.name if app  %></td>
+    <td><%= pgroup.description %></td>
+    <td><%= pgroup.flag %></td>
+    <td>
+      <%= link_to 'Send Message', new_msg_pgroup_path(pgroup) %>|
+      <%= link_to 'Devices', device_pgroup_path(pgroup) %>|
+      <%= link_to 'Edit', edit_pgroup_path(pgroup) %>|
+      <%= link_to 'Destroy', pgroup, method: :delete, data: { confirm: 'Are you sure?' } %>
+    </td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Home', root_path %> | <%= link_to 'New Pgroup', new_pgroup_path %>

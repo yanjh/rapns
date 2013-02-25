@@ -1,0 +1,27 @@
+<h1>Notify List</h1>
+
+<table>
+  <tr>
+    <th>Device</th>
+    <th>Content</th>
+    <th>Delivered</th>
+    <th>Error</th>
+    <th>Status</th>
+  </tr>
+
+<% if @notifies
+  @notifies.each do |notify| %>
+  <tr>
+    <td><%= notify.device_token %></td>
+    <td><%= notify.alert %></td>
+    <td><%= notify.delivered %></td>
+    <td><%= notify.error_code %></td>
+    <td><%= notify.failed %></td>
+  </tr>
+<% end
+end  %>
+</table>
+
+<br />
+
+<%= link_to 'Home', root_path %> | <%= link_to 'Clear', welcome_notify_clear_path, :method=>:delete, :confirm=>"Are Your Sure?" %>

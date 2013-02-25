@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Pgroup:</b>
+  <%= @pmessage.pgroup_id %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @pmessage.content %>
+</p>
+
+<p>
+  <b>Badge:</b>
+  <%= @pmessage.badge %>
+</p>
+
+<p>
+  <b>Sound:</b>
+  <%= @pmessage.sound %>
+</p>
+
+<p>
+  <b>Flag:</b>
+  <%= @pmessage.flag %>
+</p>
+
+
+<%= link_to 'Edit', edit_pmessage_path(@pmessage) %> |
+<%= link_to 'Back', pmessages_path %>

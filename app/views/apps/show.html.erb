@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @papp.name %>
+</p>
+
+<p>
+  <b>Environment:</b>
+  <%= @papp.environment %>
+</p>
+
+<p>
+  <b>Connections:</b>
+  <%= @papp.connections %>
+</p>
+
+<p>
+  <b>Certificate:</b>
+  <%= @papp.certificate %>
+</p>
+
+<%= link_to 'Edit', edit_app_path(@papp) %> |
+<%= link_to 'Back', apps_path %>

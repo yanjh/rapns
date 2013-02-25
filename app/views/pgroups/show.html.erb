@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @pgroup.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @pgroup.description %>
+</p>
+
+<p>
+  <b>Papp:</b>
+  <%= @pgroup.papp_id %>
+</p>
+
+<p>
+  <b>Flag:</b>
+  <%= @pgroup.flag %>
+</p>
+
+
+<%= link_to 'Edit', edit_pgroup_path(@pgroup) %> |
+<%= link_to 'Back', pgroups_path %>

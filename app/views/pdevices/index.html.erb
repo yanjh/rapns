@@ -1,0 +1,27 @@
+<h1>Listing pdevices</h1>
+
+<table>
+  <tr>
+    <th>Token</th>
+    <th>User</th>
+    <th>Flag</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @pdevices.each do |pdevice| %>
+  <tr>
+    <td><%= pdevice.token %></td>
+    <td><%= pdevice.user %></td>
+    <td><%= pdevice.flag %></td>
+    <td><%= link_to 'Show', pdevice %></td>
+    <td><%= link_to 'Edit', edit_pdevice_path(pdevice) %></td>
+    <td><%= link_to 'Destroy', pdevice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Home', root_path %> | <%= link_to 'New Pdevice', new_pdevice_path %>
