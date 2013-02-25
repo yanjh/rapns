@@ -1,0 +1,40 @@
+https://github.com/ileitch/rapns
+
+rails g scaffold papp name:string cert:text pkey:text title1:text title2:text flag:integer pem:string
+rails g scaffold pgroup name:string description:text papp_id:integer flag:integer
+rails g scaffold pdevice token:text user:string flag:integer dtype:integer
+rails g scaffold pmessage pgroup_id:integer content:string badge:integer sound:string flag:integer 
+
+rails g migration add_papp_id_to_pgroups papp_id:integer
+rails g migration pdevices_pgroups pdevice_id:integer pgroup_id:integer
+
+gem 'rapns'
+
+Rails.root.join('config','certs','pushchat.pem')
+
+APNS.pem = Rails.root.join('config','certs','pushchat.pem')
+
+device='c4ecfff4ec36c5cb6f1ffa021ee2dce2422144c16cd2e652594cf446a6dab305'
+
+APNS.send_notification(device,:alert=>'Hello From Ruby!!',badge=>1,:sound=>'default')
+
+appname="PushChat5"
+app = Rapns::Apns::App.new
+app.name = appname
+app.certificate = File.read(Rails.root.join('config','certs','pushchat.pem'))
+app.environment = "development"
+app.password = "helloppp"
+app.connections = 1
+app.save!
+
+
+n = Rapns::Apns::Notification.new
+n.app = Rapns::Apns::App.find_by_name(appname)
+
+n.device_token = "c4ecfff4ec36c5cb6f1ffa021ee2dce2422144c16cd2e652594cf446a6dab305"
+n.alert = "hi ruby5 !!!!"
+n.attributes_for_device = {:foo => :bar}
+n.save!
+
+
+Rapns::Apns::Notification.all
