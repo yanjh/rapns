@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  pgroup_id: 1
+  content: MyString
+  badge: 1
+  sound: MyString
+  flag: 1
+
+two:
+  pgroup_id: 1
+  content: MyString
+  badge: 1
+  sound: MyString
+  flag: 1
